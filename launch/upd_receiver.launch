@@ -1,0 +1,12 @@
+<launch>
+  <!-- 使用参数设定监听IP与端口，默认0.0.0.0:5000 -->
+  <arg name="ip" default="0.0.0.0"/>
+  <arg name="port" default="5000"/>
+  <param name="config_path" value="$(find unitree_bridge)/config/config.yaml"/>
+
+  <node name="udp_receiver_node" pkg="unitree_bridge" type="upd_receiver_node.py" output="screen">
+    <param name="ip" value="$(arg ip)"/>
+    <param name="port" value="$(arg port)"/>
+    <param name="config_path" value="$(find unitree_bridge)/config/config.yaml"/>
+  </node>
+</launch>

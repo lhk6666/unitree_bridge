@@ -1,0 +1,7 @@
+udp:
+  ip: "192.168.96.49"   # 接收端PC的IP
+  port: 5000            # 接收端的UDP监听端口
+
+topics:
+  - name: "/cmd_vel"
+    type: "geometry_msgs/Twist"
