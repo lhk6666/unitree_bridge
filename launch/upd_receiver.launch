@@ -8,4 +8,6 @@
     <param name="port" value="$(arg port)"/>
     <param name="config_path" value="$(find unitree_bridge)/config/config.yaml"/>
   </node>
+  <node name="dynamixel_bridge_node" pkg="unitree_bridge" type="dynamixel_bridge_node.py" output="screen">
+  </node>
 </launch>
