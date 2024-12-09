@@ -25,7 +25,7 @@ def json_to_rosmsg(data_dict, msg_class):
     return msg
 
 if __name__ == "__main__":
-    rospy.init_node("udp_flexible_receiver_node")
+    rospy.init_node("udp_receiver_node")
 
     config_path = rospy.get_param("~config_path", "")
     if not config_path or not os.path.exists(config_path):
@@ -50,9 +50,9 @@ if __name__ == "__main__":
         module = importlib.import_module(package_name + '.msg')
         msg_class = getattr(module, message_name)
 
-        pub = rospy.Publisher(topic_name + "_received", msg_class, queue_size=10)
+        pub = rospy.Publisher(topic_name, msg_class, queue_size=10)
         topic_map[topic_name] = (msg_class, pub)
-        rospy.loginfo("Setup receiver for topic: %s -> %s_received (%s)", topic_name, topic_name, msg_type_str)
+        rospy.loginfo("Setup receiver for topic: %s (%s)", topic_name, msg_type_str)
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -85,7 +85,7 @@ if __name__ == "__main__":
                 msg_class, pub = topic_map[topic_name]
                 ros_msg = json_to_rosmsg(data_dict, msg_class)
                 pub.publish(ros_msg)
-                rospy.loginfo("Received from %s: topic: %s -> published on %s_received", addr, topic_name, topic_name)
+                rospy.loginfo("Received from %s: topic: %s -> published on %", addr, topic_name)
             except json.JSONDecodeError as je:
                 rospy.logwarn("Failed to decode JSON: %s", je)
         except socket.error as se:
