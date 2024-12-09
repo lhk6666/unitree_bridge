@@ -83,7 +83,7 @@ topics:
 - **Purpose:** Subscribes to the listed topics, converts messages to JSON, includes the `topic_name`, and sends them via UDP.
 - **Launch:**  
   ```bash
-  roslaunch unitree_bridge forward.launch
+  roslaunch unitree_bridge upd_sender.launch
   ```
   
   The `udp_sender.launch` file loads `config.yaml` and runs `udp_sender_node.py`.
@@ -122,7 +122,7 @@ topics:
    - Ensure `config.yaml` matches the receiver’s configuration and that the `udp.ip` is set to `192.168.1.100` (the receiver’s IP).
    - Run the sender:
      ```bash
-     roslaunch unitree_bridge forward.launch
+     roslaunch unitree_bridge upd_sender.launch
      ```
    - The sender node will subscribe to the configured ROS topics. When those topics have messages published (e.g., from `rostopic pub` or another node), it will send them via UDP to the receiver.
 
@@ -140,4 +140,4 @@ topics:
 - **Adding More Topics:** Just append more entries to the `topics` section in `config.yaml`.
 - **Different UDP Ports or IPs:** Change `udp.ip` and `udp.port` in `config.yaml`.
 - **Message Conversion Logic:**  
-  For complex messages, customize the `message_to_dict` and `json_to_rosmsg` functions in `udp_sender_node.py` and `udp_flexible_receiver_node.py` to handle nested fields.
+  For complex messages, customize the `message_to_dict` and `json_to_rosmsg` functions in `udp_sender_node.py` and `udp_receiver_node.py` to handle nested fields.
