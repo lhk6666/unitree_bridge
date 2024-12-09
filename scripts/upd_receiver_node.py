@@ -85,7 +85,7 @@ if __name__ == "__main__":
                 msg_class, pub = topic_map[topic_name]
                 ros_msg = json_to_rosmsg(data_dict, msg_class)
                 pub.publish(ros_msg)
-                rospy.loginfo("Received from %s: topic: %s -> published on %", addr, topic_name)
+                rospy.loginfo("Received from %s: topic: %s -> published on %s", addr, topic_name, topic_name)
             except json.JSONDecodeError as je:
                 rospy.logwarn("Failed to decode JSON: %s", je)
         except socket.error as se:
