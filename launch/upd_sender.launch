@@ -1,5 +1,4 @@
 <launch>
-  <!-- 假设config.yaml相对路径为$(find udp_topic_forwarder)/config/config.yaml -->
   <param name="config_path" value="$(find unitree_bridge)/config/config.yaml"/>
   
   <node name="udp_sender_node" pkg="unitree_bridge" type="udp_sender_node.py" output="screen">
