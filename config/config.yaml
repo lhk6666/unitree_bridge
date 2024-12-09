@@ -3,5 +3,5 @@ udp:
   port: 5000          
 
 topics:
-  - name: "/cmd_vel"
+  - name: "/go1/cmd_vel"
     type: "geometry_msgs/Twist"
