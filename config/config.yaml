@@ -5,3 +5,7 @@ udp:
 topics:
   - name: "/go1/cmd_vel"
     type: "geometry_msgs/Twist"
+  - name: "/go1/attach"
+    type: "std_msgs/Empty"
+  - name: "/go1/detach"
+    type: "std_msgs/Empty"
