@@ -42,37 +42,37 @@ class Dog_motions:
             exit()
 
         dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, self.DXL_ID, self.ADDR_TORQUE_ENABLE, self.TORQUE_ENABLE)
-        if dxl_comm_result != COMM_SUCCESS:
-            print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
-        elif dxl_error != 0:
-            print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
-        else:
-            print("Servo is running")
+        # if dxl_comm_result != COMM_SUCCESS:
+        #     print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
+        # elif dxl_error != 0:
+        #     print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
+        # else:
+        #     print("Servo is running")
 
-        goal_positions = [self.DXL_MINIMUM_POSITION_VALUE, self.DXL_MAXIMUM_POSITION_VALUE]
-        index = 0
+        goal_positions = self.DXL_MAXIMUM_POSITION_VALUE
+        # index = 0
 
         try:
-            while index < 2:
-                dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_GOAL_POSITION, goal_positions[index])
-                if dxl_comm_result != COMM_SUCCESS:
-                    print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
-                elif dxl_error != 0:
-                    print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
+            # while index < 2:
+                dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_GOAL_POSITION, goal_positions)
+                # if dxl_comm_result != COMM_SUCCESS:
+                #     print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
+                # elif dxl_error != 0:
+                #     print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
 
-                while True:
-                    dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_PRESENT_POSITION)
-                    if dxl_comm_result != COMM_SUCCESS:
-                        print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
-                    elif dxl_error != 0:
-                        print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
+                # while True:
+                # dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_PRESENT_POSITION)
+                    # if dxl_comm_result != COMM_SUCCESS:
+                    #     print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
+                    # elif dxl_error != 0:
+                    #     print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
 
-                    print(f"Current position: {dxl_present_position}")
+                    # print(f"Current position: {dxl_present_position}")
 
-                    if abs(goal_positions[index] - dxl_present_position) < self.DXL_MOVING_STATUS_THRESHOLD:
-                        break
+                    # if abs(goal_positions[index] - dxl_present_position) < self.DXL_MOVING_STATUS_THRESHOLD:
+                    #     break
 
-                index+=1
+                # index+=1
                 time.sleep(1)
 
         except KeyboardInterrupt:
@@ -99,37 +99,37 @@ class Dog_motions:
             exit()
 
         dxl_comm_result, dxl_error = packetHandler.write1ByteTxRx(portHandler, self.DXL_ID, self.ADDR_TORQUE_ENABLE, self.TORQUE_ENABLE)
-        if dxl_comm_result != COMM_SUCCESS:
-            print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
-        elif dxl_error != 0:
-            print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
-        else:
-            print("Servo is running")
+        # if dxl_comm_result != COMM_SUCCESS:
+        #     print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
+        # elif dxl_error != 0:
+        #     print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
+        # else:
+        #     print("Servo is running")
 
-        goal_positions = [self.DXL_MAXIMUM_POSITION_VALUE, self.DXL_MINIMUM_POSITION_VALUE]
-        index = 0
+        goal_positions = self.DXL_MINIMUM_POSITION_VALUE
+        # index = 0
 
         try:
-            while index < 2:
-                dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_GOAL_POSITION, goal_positions[index])
-                if dxl_comm_result != COMM_SUCCESS:
-                    print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
-                elif dxl_error != 0:
-                    print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
+            # while index < 2:
+                dxl_comm_result, dxl_error = packetHandler.write4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_GOAL_POSITION, goal_positions)
+                # if dxl_comm_result != COMM_SUCCESS:
+                #     print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
+                # elif dxl_error != 0:
+                #     print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
 
-                while True:
-                    dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_PRESENT_POSITION)
-                    if dxl_comm_result != COMM_SUCCESS:
-                        print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
-                    elif dxl_error != 0:
-                        print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
+                # while True:
+                    # dxl_present_position, dxl_comm_result, dxl_error = packetHandler.read4ByteTxRx(portHandler, self.DXL_ID, self.ADDR_PRESENT_POSITION)
+                    # if dxl_comm_result != COMM_SUCCESS:
+                    #     print(f"Failure communication: {packetHandler.getTxRxResult(dxl_comm_result)}")
+                    # elif dxl_error != 0:
+                    #     print(f"Error of servo: {packetHandler.getRxPacketError(dxl_error)}")
 
-                    print(f"Current position: {dxl_present_position}")
+                    # print(f"Current position: {dxl_present_position}")
 
-                    if abs(goal_positions[index] - dxl_present_position) < self.DXL_MOVING_STATUS_THRESHOLD:
-                        break
+                    # if abs(goal_positions[index] - dxl_present_position) < self.DXL_MOVING_STATUS_THRESHOLD:
+                    #     break
 
-                index+=1
+                # index+=1
                 time.sleep(1)
 
         except KeyboardInterrupt:
