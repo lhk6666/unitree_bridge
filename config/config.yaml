@@ -9,3 +9,7 @@ topics:
     type: "std_msgs/Empty"
   - name: "/go1/detach"
     type: "std_msgs/Empty"
+  - name: "/go1/stand"
+    type: "std_msgs/Empty"
+  - name: "/go1/sit"
+    type: "std_msgs/Empty"

@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/dragon_llm/ros/jsk_aerial_robot_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/dragon_llm/ros/llm_ws/src/ros_chatgpt/scripts/llm_multiagent"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/dragon_llm/ros/jsk_aerial_robot_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/dragon_llm/ros/llm_ws/src/ros_chatgpt/scripts/llm_multiagent"
+    ]
+}

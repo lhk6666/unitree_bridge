@@ -7,6 +7,7 @@ import sys
 import importlib
 import yaml
 import os
+from std_srvs.srv import Trigger
 
 def json_to_rosmsg(data_dict, msg_class):
     msg = msg_class()
@@ -23,6 +24,22 @@ def json_to_rosmsg(data_dict, msg_class):
 
     assign_fields(msg, data_dict)
     return msg
+
+def service_client_stand():
+    try:
+        service_client_stand = rospy.ServiceProxy('/go1/stand', Trigger)
+        response = service_client_stand()
+        return response
+    except rospy.ServiceException as e:
+        rospy.logerr(f"Service call failed: {e}")
+
+def service_client_sit():
+    try:
+        service_client_sit = rospy.ServiceProxy('/go1/sit', Trigger)
+        response = service_client_sit()
+        return response
+    except rospy.ServiceException as e:
+        rospy.logerr(f"Service call failed: {e}")
 
 if __name__ == "__main__":
     rospy.init_node("udp_receiver_node")
@@ -76,6 +93,16 @@ if __name__ == "__main__":
 
                 if topic_name is None or data_dict is None:
                     rospy.logwarn("Invalid packet format: %s", msg_str)
+                    continue
+
+                if topic_name == "/go1/sit":
+                    service_client_sit()
+                    rospy.loginfo("Received from %s: topic: %s -> called service /go1/sit", addr, topic_name)
+                    continue
+
+                if topic_name == "/go1/stand":
+                    service_client_stand()
+                    rospy.loginfo("Received from %s: topic: %s -> called service /go1/stand", addr, topic_name)
                     continue
 
                 if topic_name not in topic_map:
